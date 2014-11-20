@@ -1,0 +1,68 @@
+/*=====================================================================
+  Microsoft 
+  ISurfacePresenter Code Sample.
+
+  Copyright (C) 2010 Microsoft Corporation.  All rights reserved.
+
+This source code is intended only as a supplement to Microsoft
+Development Tools and/or on-line documentation.  See these other
+materials for detailed information regarding Microsoft code samples.
+
+THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+PARTICULAR PURPOSE.
+=====================================================================*/
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(e320edab-77b5-49b8-8937-9fae52cc4672), version(1.0),
+  helpfile("SurfacePresenterExample.hlp"),
+  helpstring("SurfacePresenterExample ActiveX Control module"),
+  control ]
+library SurfacePresenterExampleLib
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for CSurfacePresenterExampleCtrl
+
+	[ uuid(c1dcde77-f234-44be-a2a9-3075c2898843),
+	  helpstring("Dispatch interface for SurfacePresenterExample Control")]
+	dispinterface _DSurfacePresenterExample
+	{
+		properties:
+            [id(1)] int d3dVersion;
+            [id(2)] BOOL useSurfacePresenter;
+            [id(3)] BOOL useHardwareRasterize;
+            [id(4)] int numRects;
+
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Event dispatch interface for CSurfacePresenterExampleCtrl
+
+	[ uuid(bb011432-5350-4758-8666-d13ed4f11c55),
+	  helpstring("Event interface for SurfacePresenterExample Control") ]
+	dispinterface _DSurfacePresenterExampleEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+            [id(DISPID_CLICK)] void Click(void);
+    };
+
+	//  Class information for CSurfacePresenterExampleCtrl
+
+	[ uuid(0c85b239-904a-4adf-8424-f1928b38f12f),
+	  helpstring("SurfacePresenterExample Control"), control ]
+	coclass SurfacePresenterExample
+	{
+		[default] dispinterface _DSurfacePresenterExample;
+		[default, source] dispinterface _DSurfacePresenterExampleEvents;
+	};
+
+};

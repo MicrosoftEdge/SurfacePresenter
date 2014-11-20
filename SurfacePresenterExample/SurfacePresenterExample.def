@@ -1,0 +1,9 @@
+; SurfacePresenterExample.def : Declares the module parameters.
+
+LIBRARY      "SurfacePresenterExample.Dll"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer PRIVATE
